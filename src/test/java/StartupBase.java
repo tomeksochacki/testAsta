@@ -19,7 +19,7 @@ public class StartupBase {
     public void newSession() {
         setup();
         wait = new WebDriverWait(driver, 10);
-        Log.logInfo("Test is starting");
+        Log.logInfo("Test has started");
         driver.get(URL);
         driver.manage().window().maximize();
         Log.logInfo(URL);
