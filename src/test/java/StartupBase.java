@@ -19,13 +19,16 @@ public class StartupBase {
     public void newSession() {
         setup();
         wait = new WebDriverWait(driver, 10);
+        Log.logInfo("Test has started");
         driver.get(URL);
         driver.manage().window().maximize();
+        Log.logInfo(URL);
     }
 
     @AfterClass
     public void endSession() {
         driver.quit();
         System.out.println("Test ended");
+
     }
 }

@@ -15,9 +15,26 @@
         <io.github.bonigarcia>5.0.1</io.github.bonigarcia>
         <org.seleniumhq.selenium>3.141.59</org.seleniumhq.selenium>
         <org.testng>7.4.0</org.testng>
+        <log4j>2.13.0</log4j>
+        <slf4j>1.7.32</slf4j>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j}</version>
+        </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
