@@ -1,8 +1,7 @@
-package pgs.asta.runners;
+package pgs.asta.tests;
 
 import org.testng.annotations.Test;
-import pgs.asta.StartupBase;
-import pgs.asta.pages.mainPage.MainPage;
+import pgs.asta.pages.MainPage;
 
 
 public class Startup extends StartupBase {

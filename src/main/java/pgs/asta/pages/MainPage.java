@@ -1,9 +1,8 @@
-package pgs.asta.pages.mainPage;
+package pgs.asta.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pgs.asta.pages.PageObjectBase;
 import pgs.asta.utilities.Log;
 
 

@@ -1,4 +1,4 @@
-package pgs.asta;
+package pgs.asta.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
