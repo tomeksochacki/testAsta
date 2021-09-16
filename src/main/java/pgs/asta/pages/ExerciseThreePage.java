@@ -80,17 +80,14 @@ public class ExerciseThreePage extends PageObjectBase {
     }
 
     public String checkNameValue() {
-        String name = inName.getAttribute("value");
-        return name;
+        return inName.getAttribute("value");
     }
 
     public String checkSurnameValue() {
-        String surname = inSurname.getAttribute("value");
-        return surname;
+        return inSurname.getAttribute("value");
     }
 
     public String checkPhoneValue() {
-        String phone = inPhone.getAttribute("value");
-        return phone;
+        return inPhone.getAttribute("value");
     }
 }
