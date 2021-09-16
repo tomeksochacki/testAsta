@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pgs.asta.pages.ExerciseThreePage;
 import pgs.asta.pages.MainPage;
 import pgs.asta.utilities.Log;
 
@@ -15,13 +14,11 @@ public class StartupBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected MainPage mainPage;
-    protected ExerciseThreePage exerciseThreePage;
 
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
-        exerciseThreePage = new ExerciseThreePage(driver);
     }
 
     @BeforeClass
