@@ -72,7 +72,7 @@ public class ExerciseOneTest extends StartupBase {
         exerciseOnePage
                 .resetPage()
                 .chooseItemFromList(4)
-                .addProductQuantity(12)
+                .addProductQuantity(firstItemQuantity)
                 .clickAddButton();
         itemsFullPrice += exerciseOnePage.getItemPrice(firstItemQuantity);
         exerciseOnePage

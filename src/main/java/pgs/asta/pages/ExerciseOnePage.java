@@ -5,9 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pgs.asta.utilities.Log;
+import pgs.asta.utilities.Round;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +38,9 @@ public class ExerciseOnePage extends PageObjectBase {
     private List<WebElement> basketItemPriceBoxList;
 
     private WebElement selectedTestBox;
-    private double itemsPrice = 0.0;
+    String buttonPath = ".//button[@class='btn btn-sm']";
+    String quantityBox = ".//input[@class='form-control']";
+    String nameBox = ".//div[@class='caption']//h4";
 
     public ExerciseOnePage(WebDriver driver) {
         super(driver);
@@ -48,19 +49,13 @@ public class ExerciseOnePage extends PageObjectBase {
     private WebElement getProductQuantityBox() {
         return selectedTestBox
                 .findElement(By
-                        .xpath(".//input[@class='form-control']"));
+                        .xpath(quantityBox));
     }
 
     private WebElement getProductAddButton() {
         return selectedTestBox
                 .findElement(By
-                        .xpath(".//button[@class='btn btn-sm']"));
-    }
-
-    private double round(double value) {
-        BigDecimal bd = new BigDecimal(Double.toString(value));
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+                        .xpath(buttonPath));
     }
 
     //  Selecting product box by its place on the product grid - from left to right
@@ -77,7 +72,7 @@ public class ExerciseOnePage extends PageObjectBase {
         for (WebElement webElement : productItemList) {
             if (Objects.equals(webElement
                     .findElement(By
-                            .xpath(".//div[@class='caption']//h4"))
+                            .xpath(nameBox))
                     .getText(), name)) {
                 selectedTestBox = webElement;
                 Log.logInfo("User chose product: " + name);
@@ -112,17 +107,13 @@ public class ExerciseOnePage extends PageObjectBase {
         return itemList;
     }
 
-    public double getItemsPrice() {
-        return itemsPrice;
-    }
-
     public double getSummaryPrice() {
         String price = basketSummaryPrice.getText();
         return Double.parseDouble(price.substring(0, price.indexOf(" ")));
     }
 
     public double getItemPrice(int quantity) {
-        return round(Double
+        return Round.price(Double
                 .parseDouble(getProductAddButton()
                         .getAttribute("data-product-price")) * quantity);
     }
