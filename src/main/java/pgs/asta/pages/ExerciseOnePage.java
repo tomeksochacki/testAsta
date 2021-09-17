@@ -38,9 +38,9 @@ public class ExerciseOnePage extends PageObjectBase {
     private List<WebElement> basketItemPriceBoxList;
 
     private WebElement selectedTestBox;
-    private final String BUTTONPATH = ".//button[@class='btn btn-sm']";
-    private final String QUANTITYBOX = ".//input[@class='form-control']";
-    private final String NAMEBOX = ".//div[@class='caption']//h4";
+    private final String BUTTON_PATH = ".//button[@class='btn btn-sm']";
+    private final String QUANTITY_BOX = ".//input[@class='form-control']";
+    private final String NAME_BOX = ".//div[@class='caption']//h4";
 
     public ExerciseOnePage(WebDriver driver) {
         super(driver);
@@ -49,13 +49,13 @@ public class ExerciseOnePage extends PageObjectBase {
     private WebElement getProductQuantityBox() {
         return selectedTestBox
                 .findElement(By
-                        .xpath(QUANTITYBOX));
+                        .xpath(QUANTITY_BOX));
     }
 
     private WebElement getProductAddButton() {
         return selectedTestBox
                 .findElement(By
-                        .xpath(BUTTONPATH));
+                        .xpath(BUTTON_PATH));
     }
 
     //  Selecting product box by its place on the product grid - from left to right
@@ -72,7 +72,7 @@ public class ExerciseOnePage extends PageObjectBase {
         for (WebElement webElement : productItemList) {
             if (Objects.equals(webElement
                     .findElement(By
-                            .xpath(NAMEBOX))
+                            .xpath(NAME_BOX))
                     .getText(), name)) {
                 selectedTestBox = webElement;
                 Log.logInfo("User chose product: " + name);
