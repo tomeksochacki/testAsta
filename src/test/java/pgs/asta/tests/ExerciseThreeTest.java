@@ -18,9 +18,7 @@ public class ExerciseThreeTest extends StartupBase {
 
     @Test
     public void savingTheFormAllFields() {
-        exerciseThreePage = new ExerciseThreePage(driver);
-        driver.get("https://buggy-testingcup.pgs-soft.com/task_3");
-        accessingToTheForm(exerciseThreePage);
+        creatingStartupStepsForEachTest();
         exerciseThreePage.fillFields(nameSave, surnameSave, notesSave, phonesSave);
         exerciseThreePage.uploadFile(photoPath);
         exerciseThreePage.clickBtnSave();
@@ -28,9 +26,7 @@ public class ExerciseThreeTest extends StartupBase {
 
     @Test
     public void savingTheFormTwoFields() {
-        exerciseThreePage = new ExerciseThreePage(driver);
-        driver.get("https://buggy-testingcup.pgs-soft.com/task_3");
-        accessingToTheForm(exerciseThreePage);
+        creatingStartupStepsForEachTest();
         exerciseThreePage.clearFields();
         exerciseThreePage.fillOneField(notesSave);
         exerciseThreePage.uploadFile(photoPath);
@@ -39,9 +35,7 @@ public class ExerciseThreeTest extends StartupBase {
 
     @Test
     public void checkingThreeValuesOfTheForm() {
-        exerciseThreePage = new ExerciseThreePage(driver);
-        driver.get("https://buggy-testingcup.pgs-soft.com/task_3");
-        accessingToTheForm(exerciseThreePage);
+        creatingStartupStepsForEachTest();
         Assert.assertEquals(defaultName, exerciseThreePage.checkNameValue());
         Assert.assertEquals(defaultSurname, exerciseThreePage.checkSurnameValue());
         Assert.assertEquals(defaultPhone, exerciseThreePage.checkPhoneValue());
@@ -64,5 +58,11 @@ public class ExerciseThreeTest extends StartupBase {
         exerciseThreePage.clickMenu();
         exerciseThreePage.clickForm();
         exerciseThreePage.clickEditForm();
+    }
+
+    private void creatingStartupStepsForEachTest() {
+        exerciseThreePage = new ExerciseThreePage(driver);
+        driver.get("https://buggy-testingcup.pgs-soft.com/task_3");
+        accessingToTheForm(exerciseThreePage);
     }
 }
