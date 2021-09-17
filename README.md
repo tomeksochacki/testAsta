@@ -29,7 +29,7 @@ Next, you’ll add a new file to this repository.
 4. Click **Commit** and then **Commit** again in the dialog.
 5. Go back to the **Source** page.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pgs.asta.pages.
 
 ---
 

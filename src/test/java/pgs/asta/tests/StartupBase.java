@@ -6,16 +6,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pgs.asta.pages.MainPage;
 import pgs.asta.utilities.Log;
 
 public class StartupBase {
     final String URL = "https://asta.pgs-soft.com/";
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected MainPage mainPage;
 
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        mainPage = new MainPage(driver);
     }
 
     @BeforeClass
@@ -32,6 +35,5 @@ public class StartupBase {
     public void endSession() {
         driver.quit();
         System.out.println("Test ended");
-
     }
 }
