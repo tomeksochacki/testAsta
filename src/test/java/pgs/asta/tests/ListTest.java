@@ -10,7 +10,6 @@ public class ListTest extends StartupBase {
 
     @Test
     public void testOne() {
-//        driver.get();
         mainPage.buggyAppClick();
         pageObjectBase.switchTabToSecond();
         exercisesListPage.exerciseOne();

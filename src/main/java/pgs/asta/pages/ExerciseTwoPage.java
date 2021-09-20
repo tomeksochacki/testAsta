@@ -19,7 +19,6 @@ public class ExerciseTwoPage extends PageObjectBase {
 
     public ExerciseTwoPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
 
