@@ -1,9 +1,7 @@
 package pgs.asta.tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import pgs.asta.pages.ExerciseTwoPage;
-import pgs.asta.pages.PageObjectBase;
 
 public class ChoosingProductTest extends StartupBase {
 

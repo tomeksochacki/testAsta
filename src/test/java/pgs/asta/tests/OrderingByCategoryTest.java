@@ -4,7 +4,6 @@ import org.testng.annotations.Test;
 import pgs.asta.pages.ExerciseTwoPage;
 
 public class OrderingByCategoryTest extends StartupBase {
-
     ExerciseTwoPage exerciseTwoPage;
 
     @Test

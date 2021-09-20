@@ -5,7 +5,6 @@ import pgs.asta.pages.ExerciseTwoPage;
 
 public class SelectingItemTest extends StartupBase {
 
-
         ExerciseTwoPage exerciseTwoPage;
 
         @Test
