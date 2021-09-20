@@ -8,11 +8,14 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ExerciseTwoPage extends PageObjectBase {
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/span[1]/span[1]/span[1]/span[1]")
+    @FindBy(xpath = "//span[@class='select2-selection__arrow']")
     WebElement categorySelectArrow;
 
     @FindBy(xpath = "//input[@class='select2-search__field']")
     WebElement categoryInput;
+
+    @FindBy(xpath = "//h4[contains(text(),'Biuro XYZ')]")
+    WebElement selectItem;
 
     public ExerciseTwoPage(WebDriver driver) {
         super(driver);
@@ -21,12 +24,21 @@ public class ExerciseTwoPage extends PageObjectBase {
 
 
     public void orderingByCategory(String category) {
-//        categorySelectArrow.click();
         clickElement(categorySelectArrow);
-        categoryInput.click();
+        clickElement(categoryInput);
         categoryInput.clear();
         categoryInput.sendKeys(category);
-//        categoryInput.sendKeys(category);
+    }
+
+    public void orderingByProduct(String product) {
+        clickElement(categorySelectArrow);
+        clickElement(categoryInput);
+        categoryInput.clear();
+        categoryInput.sendKeys(product);
+    }
+
+    public void selectingItem() {
+        selectItem.click();
     }
 
     private Select dropdown;
