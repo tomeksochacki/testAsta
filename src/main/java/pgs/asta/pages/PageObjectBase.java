@@ -1,11 +1,16 @@
 package pgs.asta.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Iterator;
+import java.util.Set;
 
 public class PageObjectBase {
 
@@ -25,5 +30,14 @@ public class PageObjectBase {
     public void clickElement(WebElement webElement) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         webElement.click();
+    }
+
+    public void switchTabToSecond() {
+        Set<String> ids = driver.getWindowHandles();
+        Iterator<String> it = ids.iterator();
+        String parentId = it.next();
+        String childId = it.next();
+        driver.switchTo().window(childId);
+        System.out.println(driver.getTitle());
     }
 }
