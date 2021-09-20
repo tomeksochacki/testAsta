@@ -10,7 +10,6 @@ public class ListTest extends StartupBase {
 
     @Test
     public void testOne() {
-
         mainPage.buggyAppClick();
         pageObjectBase.switchTabToSecond();
         exercisesListPage.exerciseOne();
