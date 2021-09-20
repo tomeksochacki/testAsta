@@ -8,28 +8,26 @@ public class OrderingByCategoryTest extends StartupBase {
 
     @Test
     public void testOrderingByCategorySport() {
+        testOrdering();
+        exerciseTwoPage.orderingByCategory("Sport");
+    }
+
+    private void testOrdering() {
         exerciseTwoPage = new ExerciseTwoPage(driver);
         mainPage.buggyAppClick();
         pageObjectBase.switchTabToSecond();
         exercisesListPage.exerciseTwo();
-        exerciseTwoPage.orderingByCategory("Sport");
     }
 
     @Test
     public void testOrderingByCategoryElektronika() {
-        exerciseTwoPage = new ExerciseTwoPage(driver);
-        mainPage.buggyAppClick();
-        pageObjectBase.switchTabToSecond();
-        exercisesListPage.exerciseTwo();
+        testOrdering();
         exerciseTwoPage.orderingByCategory("Elektronika");
     }
 
     @Test
     public void testOrderingByCategoryFirma() {
-        exerciseTwoPage = new ExerciseTwoPage(driver);
-        mainPage.buggyAppClick();
-        pageObjectBase.switchTabToSecond();
-        exercisesListPage.exerciseTwo();
+        testOrdering();
         exerciseTwoPage.orderingByCategory("Firma i usługi");
     }
 }
