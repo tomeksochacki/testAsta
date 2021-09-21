@@ -70,7 +70,6 @@ public class ExerciseOneTest extends StartupBase {
         Alert alert = driver.switchTo().alert();
         String alertMessage = driver.switchTo().alert().getText();
         Assertions.assertThat(alertMessage).contains(alertText);
-        Assert.assertTrue(alertMessage.contains(alertText));
         alert.accept();
         Log.logInfo("Test two passed");
         System.out.println("-----------");
