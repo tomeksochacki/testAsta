@@ -8,7 +8,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pgs.asta.pages.ExercisesListPage;
 import pgs.asta.pages.MainPage;
-import pgs.asta.pages.PageObjectBase;
 import pgs.asta.utilities.Log;
 
 public class StartupBase {
@@ -17,14 +16,12 @@ public class StartupBase {
     protected WebDriverWait wait;
     protected MainPage mainPage;
     protected ExercisesListPage exercisesListPage;
-    protected PageObjectBase pageObjectBase;
 
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         exercisesListPage = new ExercisesListPage(driver);
-        pageObjectBase = new PageObjectBase(driver);
     }
 
     @BeforeClass

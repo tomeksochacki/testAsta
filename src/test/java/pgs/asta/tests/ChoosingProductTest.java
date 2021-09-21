@@ -11,7 +11,7 @@ public class ChoosingProductTest extends StartupBase {
     public void orderingByproduct() {
         exerciseTwoPage = new ExerciseTwoPage(driver);
         mainPage.buggyAppClick();
-        pageObjectBase.switchTabToSecond();
+        mainPage.switchTabToSecond();
         exercisesListPage.exerciseTwo();
         exerciseTwoPage.orderingByProduct("Koszulka");
     }
