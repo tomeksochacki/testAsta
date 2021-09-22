@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import pgs.asta.pages.ExerciseThreePage;
 import pgs.asta.utilities.Log;
 
+import java.util.ArrayList;
+
 public class ExerciseThreeTest extends StartupBase {
     ExerciseThreePage exerciseThreePage;
     String nameSave = "Tomek";
@@ -15,30 +17,35 @@ public class ExerciseThreeTest extends StartupBase {
     String defaultSurname = "Hayek";
     String defaultPhone = "19154175411";
     String photoPath = "C:\\zdjecie.jpg";
+    //lista domyślnych danych użytkownika
+    ArrayList<String> defaultUserDataList = new ArrayList<>();
 
     @Test
     public void savingTheFormAllFields() {
         creatingStartupStepsForEachTest();
-        exerciseThreePage.fillFields(nameSave, surnameSave, notesSave, phonesSave);
-        exerciseThreePage.uploadFile(photoPath);
-        exerciseThreePage.clickBtnSave();
+        exerciseThreePage
+                .fillFields(nameSave, surnameSave, notesSave, phonesSave)
+                .uploadFile(photoPath)
+                .clickBtnSave();
     }
 
     @Test
     public void savingTheFormTwoFields() {
         creatingStartupStepsForEachTest();
-        exerciseThreePage.clearFields();
-        exerciseThreePage.fillOneField(notesSave);
-        exerciseThreePage.uploadFile(photoPath);
-        exerciseThreePage.clickBtnSave();
+        exerciseThreePage
+                .clearFields()
+                .fillOneField(notesSave)
+                .uploadFile(photoPath)
+                .clickBtnSave();
     }
 
     @Test
     public void checkingThreeValuesOfTheForm() {
         creatingStartupStepsForEachTest();
-        Assert.assertEquals(defaultName, exerciseThreePage.checkNameValue());
-        Assert.assertEquals(defaultSurname, exerciseThreePage.checkSurnameValue());
-        Assert.assertEquals(defaultPhone, exerciseThreePage.checkPhoneValue());
+        addValueToDefaultUserDataList();
+        for (int i = 0; i < defaultUserDataList.size(); i++) {
+            Assert.assertEquals(defaultUserDataList.get(i), exerciseThreePage.getUserDataList().get(i));
+        }
     }
 
     @Test
@@ -55,14 +62,21 @@ public class ExerciseThreeTest extends StartupBase {
     }
 
     private void accessingToTheForm(ExerciseThreePage exerciseThreePage) {
-        exerciseThreePage.clickMenu();
-        exerciseThreePage.clickForm();
-        exerciseThreePage.clickEditForm();
+        exerciseThreePage
+                .clickMenu()
+                .clickForm()
+                .clickEditForm();
     }
 
     private void creatingStartupStepsForEachTest() {
         exerciseThreePage = new ExerciseThreePage(driver);
         driver.get("https://buggy-testingcup.pgs-soft.com/task_3");
         accessingToTheForm(exerciseThreePage);
+    }
+
+    private void addValueToDefaultUserDataList() {
+        defaultUserDataList.add(defaultName);
+        defaultUserDataList.add(defaultSurname);
+        defaultUserDataList.add(defaultPhone);
     }
 }

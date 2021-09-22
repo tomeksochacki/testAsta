@@ -4,7 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+
 public class ExerciseThreePage extends PageObjectBase {
+
+    //lista danych użytkownika
+    ArrayList<String> userDataList = new ArrayList<>();
 
     @FindBy(linkText = "Menu")
     WebElement menu;
@@ -41,53 +46,56 @@ public class ExerciseThreePage extends PageObjectBase {
         super(driver);
     }
 
-    public void clickMenu() {
+    public ExerciseThreePage clickMenu() {
         menu.click();
+        return this;
     }
 
-    public void clickForm() {
+    public ExerciseThreePage clickForm() {
         form.click();
+        return this;
     }
 
-    public void clickEditForm() {
+    public ExerciseThreePage clickEditForm() {
         editForm.click();
+        return this;
     }
 
-    public void uploadFile(String path) {
+    public ExerciseThreePage uploadFile(String path) {
         fileUpload.sendKeys(path);
+        return this;
     }
 
-    public void clickBtnSave() {
+    public ExerciseThreePage clickBtnSave() {
         btnSave.click();
+        return this;
     }
 
-    public void clearFields() {
+    public ExerciseThreePage clearFields() {
         inName.clear();
         inSurname.clear();
         inNotes.clear();
         inPhone.clear();
+        return this;
     }
 
-    public void fillFields(String name, String surName, String notes, String phone) {
+    public ExerciseThreePage fillFields(String name, String surName, String notes, String phone) {
         inName.sendKeys(name);
         inSurname.sendKeys(surName);
         inNotes.sendKeys(notes);
         inPhone.sendKeys(phone);
+        return this;
     }
 
-    public void fillOneField(String notes) {
+    public ExerciseThreePage fillOneField(String notes) {
         inNotes.sendKeys(notes);
+        return this;
     }
 
-    public String checkNameValue() {
-        return inName.getAttribute("value");
-    }
-
-    public String checkSurnameValue() {
-        return inSurname.getAttribute("value");
-    }
-
-    public String checkPhoneValue() {
-        return inPhone.getAttribute("value");
+    public ArrayList<String> getUserDataList() {
+        userDataList.add(inName.getAttribute("value"));
+        userDataList.add(inSurname.getAttribute("value"));
+        userDataList.add(inPhone.getAttribute("value"));
+        return userDataList;
     }
 }
