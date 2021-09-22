@@ -11,7 +11,7 @@ public class SelectingItemTest extends StartupBase {
     public void selectingItem() {
             exerciseTwoPage = new ExerciseTwoPage(driver);
             mainPage.buggyAppClick();
-            pageObjectBase.switchTabToSecond();
+            exercisesListPage.switchTabToSecond();
             exercisesListPage.exerciseTwo();
             exerciseTwoPage.selectingItem();
         }

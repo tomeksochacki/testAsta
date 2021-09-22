@@ -1,5 +1,7 @@
 package pgs.asta.tests;
 
+import org.assertj.core.api.Assertions;
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pgs.asta.pages.ExerciseOnePage;
@@ -20,11 +22,14 @@ public class ExerciseOneTest extends StartupBase {
 
     @Test
     public void firstTest() {
-        Log.logInfo("Test one starts - checking item quantity");
+        mainPage.buggyAppClick();
+        mainPage.switchTabToSecond();
+        exercisesListPage.exerciseOne();
+
+        Log.logInfo("TEST ONE STARTS - checking item quantity");
         exerciseOnePage = new ExerciseOnePage(driver);
 
         List<String> productList = new ArrayList<>();
-        driver.get("https://testingcup.pgs-soft.com/task_1");
         exerciseOnePage
                 .chooseItemFromList(itemOne)
                 .addProductQuantity(1)
@@ -50,25 +55,29 @@ public class ExerciseOneTest extends StartupBase {
             Assert.assertTrue(exerciseOnePage.getBasketItemList().contains(item));
         }
         Log.logInfo("Test one passed");
+        System.out.println("-----------");
     }
 
     @Test
     public void secondTest() {
-        Log.logInfo("Test two starts - User try to add 101 items to basket");
+        Log.logInfo("TEST TWO STARTS - User try to add 101 items to basket");
+        String alertText = "Łączna ilość produktów w koszyku nie może przekroczyć 100";
         exerciseOnePage
+                .resetPage()
                 .chooseItemFromList(3)
                 .addProductQuantity(101);
-        try {
-            exerciseOnePage.clickAddButton();
-        } catch (Exception e) {
-            Assert.assertTrue(e.getMessage().contains("Łączna ilość produktów w koszyku nie może przekroczyć 100"));
-        }
+        exerciseOnePage.clickAddButton();
+        Alert alert = driver.switchTo().alert();
+        String alertMessage = driver.switchTo().alert().getText();
+        Assertions.assertThat(alertMessage).contains(alertText);
+        alert.accept();
         Log.logInfo("Test two passed");
+        System.out.println("-----------");
     }
 
     @Test
     public void priceTest() {
-        Log.logInfo("Test three starts - checking items price");
+        Log.logInfo("TEST THREE STARTS - checking items price");
         exerciseOnePage
                 .resetPage()
                 .chooseItemFromList(4)
@@ -84,6 +93,7 @@ public class ExerciseOneTest extends StartupBase {
         Assert.assertEquals(itemsFullPrice, exerciseOnePage.getSummaryPrice());
         Log.logInfo("Prices are the same");
         Log.logInfo("Test three passed");
+        System.out.println("-----------");
 
     }
 

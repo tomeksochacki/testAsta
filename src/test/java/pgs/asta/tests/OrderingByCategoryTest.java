@@ -15,7 +15,7 @@ public class OrderingByCategoryTest extends StartupBase {
     private void testOrdering() {
         exerciseTwoPage = new ExerciseTwoPage(driver);
         mainPage.buggyAppClick();
-        pageObjectBase.switchTabToSecond();
+        exercisesListPage.switchTabToSecond();
         exercisesListPage.exerciseTwo();
     }
 
