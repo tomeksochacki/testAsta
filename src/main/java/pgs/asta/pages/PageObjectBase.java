@@ -21,16 +21,25 @@ public class PageObjectBase {
 
     public PageObjectBase(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, 4);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 4), this);
+        wait = new WebDriverWait(this.driver, 8);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 8), this);
     }
 
     public void waitForElement(WebElement webElement) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
+    public void checkIsElementVisible(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void checkIsElementClickable(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void clickElement(WebElement webElement) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        checkIsElementVisible(webElement);
+        checkIsElementClickable(webElement);
         webElement.click();
     }
 
